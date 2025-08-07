@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f8f9fa;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">shockey.</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">Scaling Teams Through Smart Systems & AI</h1>
+            <p class="subtitle fade-in">Marketing Operations Specialist with 4+ years driving revenue growth through process standardization and automation—delivering a proven 16% improvement in deliverable completion within 12 months.</p>
+            
+            <div class="cta-buttons fade-in">
+                <a href="#" class="btn btn-primary" onclick="downloadResume()">📄 Download My Resume</a>
+                <a href="#contact" class="btn btn-secondary">🚀 Let's Get to Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Marketing Operations Specialist focused on AI-powered automation and process optimization</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/250x250/667eea/ffffff?text=Trichia+Ann" alt="Trichia Ann Labiste">
+                </div>
+                
+                <div class="about-text">
+                    <h3>The Mind Behind the Systems</h3>
+                    <p>I'm the type of person who sees chaos and immediately starts sketching out flowcharts in my head. There's something deeply satisfying about taking a messy, overwhelming process and turning it into something elegant and predictable. I love building systems and processes that scale—not just because they work, but because they free people to do their best work.</p>
+                    
+                    <p>What drives me isn't just the technical side of automation or the satisfaction of a perfectly optimized workflow (though I do get genuinely excited about a well-designed ClickUp setup). It's the moment when a team goes from firefighting every day to having breathing room to innovate. When someone can take a vacation without everything falling apart. When "how do we do this?" has a clear, documented answer.</p>
+                    
+                    <p>I'm naturally curious about how things work and obsessively focused on how they can work better. Whether it's growing a YouTube channel from 300 to 4,000 subscribers or designing AI workflows that scale lead generation, I approach every challenge with the same question: "How can we make this so smooth that it practically runs itself?"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>What I Do Best</h2>
+                <p>Combining AI technology with strategic operations to create systems that scale</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🤖</div>
+                    <h3>AI & Automation Strategy</h3>
+                    <p>Leading AI-powered content workflows and automation strategies that streamline production, improve efficiency, and drive consistent results across marketing operations.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Marketing Tech Stack</h3>
+                    <p>Building and managing comprehensive marketing technology ecosystems including HubSpot, ClickUp, Zapier, and GHL integrations that optimize workflows and data flow.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🎯</div>
+                    <h3>Brand Strategy</h3>
+                    <p>Developing cohesive brand experiences through strategic content planning, visual consistency, and systematic brand asset management that builds authority and drives engagement.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">📈</div>
+                    <h3>Process Optimization</h3>
+                    <p>Implementing EOS frameworks, SOPs, and systematic approaches that deliver measurable improvements—like increasing deliverable completion from 80% to 96%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Strategic initiatives that showcase systematic problem-solving and measurable results</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">AI Automation System</div>
+                    <div class="project-content">
+                        <h3>AI-Powered Lead Generation System</h3>
+                        <p>Designed and executed comprehensive AI automation strategies at MSP Launchpad, building full marketing tech stack with CRM architecture, automation workflows, and data systems that scale inbound lead generation.</p>
+                        <div class="project-tags">
+                            <span class="tag">HubSpot</span>
+                            <span class="tag">AI Workflows</span>
+                            <span class="tag">CRM Architecture</span>
+                            <span class="tag">Lead Attribution</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">Agency ClickUp Blueprint</div>
+                    <div class="project-content">
+                        <h3>Scalable Agency Operations System</h3>
+                        <p>Designed and implemented a comprehensive ClickUp blueprint for marketing agency workflows, featuring pre-built templates, automation triggers, and cross-departmental reporting that improved deliverable completion from 80% to 96%.</p>
+                        <div class="project-tags">
+                            <span class="tag">ClickUp</span>
+                            <span class="tag">Process Design</span>
+                            <span class="tag">Workflow Automation</span>
+                            <span class="tag">SOPs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">YouTube Growth Strategy</div>
+                    <div class="project-content">
+                        <h3>YouTube Channel Scaling System</h3>
+                        <p>Grew ZenPilot's YouTube channel from 300 to 4,000+ subscribers through strategic content planning, production workflows, and systematic approach to both Shorts and long-form content creation.</p>
+                        <div class="project-tags">
+                            <span class="tag">Content Strategy</span>
+                            <span class="tag">YouTube Growth</span>
+                            <span class="tag">Production Workflows</span>
+                            <span class="tag">SEO Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Ready to Scale Your Operations?</h2>
+            <p>Let's discuss how AI-powered automation and systematic processes can transform your marketing operations and drive predictable growth.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:trichia.shockey@gmail.com" class="btn btn-primary">💬 Let's Get to Work</a>
+                <a href="#" class="btn btn-secondary" onclick="downloadResume()">📄 Download My Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="mailto:trichia.shockey@gmail.com" title="Email">📧</a>
+                <a href="https://linkedin.com/in/ianshockey" title="LinkedIn">💼</a>
+                <a href="tel:+639622715632" title="Phone">📱</a>
+                <a href="#" title="Portfolio">🌐</a>
+            </div>
+            <p>&copy; 2025 Trichia Ann Labiste. Scaling teams through smart systems and AI-powered automation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download resume function
+        function downloadResume() {
+            // Replace with your actual resume file path
+            const resumeUrl = 'Trichia-Ann-Resume.pdf';
+            const link = document.createElement('a');
+            link.href = resumeUrl;
+            link.download = 'Trichia-Ann-Labiste-Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // For now, show an alert since we don't have an actual resume file
+            alert('Resume download would start here. Please upload your resume PDF to the repository and update the resumeUrl variable.');
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Contact form handling (if you add a form later)
+        function handleContact() {
+            // Replace with your contact form handling logic
+            window.location.href = 'mailto:trichia.shockey@gmail.com?subject=Let\'s Work Together&body=Hi Trichia! I\'m interested in discussing how you can help optimize our marketing operations and implement AI automation strategies.';
+        }
+    </script>
+</body>
+</html>
